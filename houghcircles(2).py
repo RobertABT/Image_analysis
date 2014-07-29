@@ -23,11 +23,14 @@ else:
 		#draw centre of the circle
 		cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),3)
 cv2.imshow('detected circles', cimg)
+
+# this next bit lets you choose to 
 k = cv2.waitKey(0)
-if k % 256 == 27:
+if k % 256 == 27: #ESC key closes
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
-elif k % 256 == ord('n'):
-	continue
+elif k % 256 == ord('s'): #s key saves the edited image
+	imwrite('circles ' + filename + '.png',cimg)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
