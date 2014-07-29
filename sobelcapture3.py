@@ -7,8 +7,8 @@ import math
 import datetime
 
 def isInCircle(x,y, circle):
-	dist = math.sqrt((math.pow(x-circle[0],2))+(math.pow(y-circle[1],2)))
-	if dist <= int(100): #limitsradius, post choosing
+	dist = math.sqrt((math.pow(x-circle[0],2))+(math.pow(y-circle[1],2))) #for details see sobelcapture2.py
+	if dist <= circles[2]: #circle[2] is the radius of the circle to limit radius replace with int(100) (or any other number)
 		return True
 	else:
 		cv2.circle(original,(x,y),1,(255,255,255))
@@ -82,11 +82,8 @@ while True:
 			for x in range(width): #this uses the isInCircle function to test every pixel and perform operations
 				for y in range (height):
 					if isInCircle(x,y,testcircle):
-				#		print x,y
 						ColourPixel = original[y,x]
 						GreyPixel = grey[y,x]
-			#			print pixel
-			#			newimg = cv2.circle(img,(x,y),1,((ColourPixel[0]),(ColourPixel[1]),(ColourPixel[2]))) #this needs a way to create a new image using BGR values from original image
 						GreyCirclePixel.append((x,y,GreyPixel))
 						ColourCirclePixel.append((x,y,ColourPixel))
 						pixelCount += 1
@@ -111,7 +108,6 @@ while True:
 			print 'AvgGreyCount=' 
 			print AvgGreyCount 
 			cv2.imshow('detected pixels', original)
-#			cv2.imshow('reformulated image',newimg) to draw newimage when function works
 			print 'Press ''s'' to save image or ESC to Discard (Either will allow you to take another image) Then Press c to capture another image, Pressing ESC agin will then exit'
 			k = cv2.waitKey(0)
 			if k % 256 ==27:
