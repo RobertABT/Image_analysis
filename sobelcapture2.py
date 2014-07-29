@@ -82,11 +82,8 @@ while True:
 			for x in range(width): #this uses the isInCircle function to test every pixel and perform operations
 				for y in range (height):
 					if isInCircle(x,y,testcircle):
-				#		print x,y
-						ColourPixel = original[y,x]
+						ColourPixel = original[y,x] #opencv reads y,x for some reason
 						GreyPixel = grey[y,x]
-			#			print pixel
-			#			newimg = cv2.circle(img,(x,y),1,((ColourPixel[0]),(ColourPixel[1]),(ColourPixel[2]))) #this needs a way to create a new image using BGR values from original image
 						GreyCirclePixel.append((x,y,GreyPixel))
 						ColourCirclePixel.append((x,y,ColourPixel))
 						pixelCount += 1
@@ -101,7 +98,7 @@ while True:
 				RedAvgColourCount += ColourCirclePixel[i][2][2]
 			print 'Number of pixels within the circle detected=' #helps explain in terminal	
 			print pixelCount #number of pixels in circle
-			# the below must all be floats to prevent roung of the numbers
+			# the below must all be floats to prevent rounding of the numbers
 			AvgGreyCount = float(AvgGreyCount) / float(pixelCount) #divides the total of greypixel values by pixel count
 			BlueAvgColourCount = float(BlueAvgColourCount) / float(pixelCount)
 			GreenAvgColourCount = float(GreenAvgColourCount) / float(pixelCount)
@@ -111,7 +108,6 @@ while True:
 			print 'AvgGreyCount=' 
 			print AvgGreyCount 
 			cv2.imshow('detected pixels', original)
-#			cv2.imshow('reformulated image',newimg) to draw newimage when function works
 			print 'Press ''s'' to save image or ESC to Discard (Either will allow you to take another image) Then Press c to capture another image, Pressing ESC agin will then exit'
 			k = cv2.waitKey(0)
 			if k % 256 ==27:
