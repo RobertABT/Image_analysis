@@ -5,10 +5,10 @@ from Tkinter import Tk
 from tkFileDialog import askopenfilename
 import math
 import datetime
-
+# this definition checks if a pixel (set of x,y values) are within a given radius of the centre of the circle
 def isInCircle(x,y, circle):
-	dist = math.sqrt((math.pow(x-circle[0],2))+(math.pow(y-circle[1],2)))
-	if dist <= int(100): #limitsradius, post choosing
+	dist = math.sqrt((math.pow(x-circle[0],2))+(math.pow(y-circle[1],2))) #circle[0] is the x coord circle[1] is the y coord
+	if dist <= circle[2]: #circle[2] is the radius of the circle to limit radius replace with int(100) (or any other number
 		return True
 	else:
 		cv2.circle(original,(x,y),1,(255,255,255))
