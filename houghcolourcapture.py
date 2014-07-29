@@ -3,9 +3,7 @@ import cv2
 import cv2.cv as cv
 import datetime
 
-
-# loading in a colour image as greyscale (could help see edges?)
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0) #this uses the first webcam on the system, change to (1) to use the second camera
 
 while(True):
 	# capture frame-by-frame
@@ -15,12 +13,12 @@ while(True):
 	# Display the resulting frame
 	cv2.imshow('frame',frame)
 	k = cv2.waitKey(1)
-	if k % 256 == 27:
+	if k % 256 == 27: #ESC key quits
 		break
-	elif k % 256 == ord('s'):
+	elif k % 256 == ord('s'): #s key saves
  
 		print str(datetime.datetime.now())
-		filetime = str(datetime.datetime.now())
+		filetime = str(datetime.datetime.now()) #saves date-time of imagecapture
 		filename = 'picture_' + filetime +'.png' # creates a filename which can be reused in the next lines of code
 		cv2.imwrite(filename,frame)
 		img = cv2.imread(filename,0)
@@ -40,7 +38,7 @@ while(True):
 			filename2 = 'picture_circles_' + filetime +'.png' #creates second file for treated image
 			cv2.imwrite(filename2,cimg)
 		else:
-			print 'no circles' #this is the most recently aded line of code, useful when imaging
+			print 'no circles' 
 			pass
 
 #when everything is done, release the capture
