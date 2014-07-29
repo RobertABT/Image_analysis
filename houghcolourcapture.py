@@ -1,3 +1,5 @@
+#this program captures an image, analyses it for circles and then uopn a keypress it draws displays and saves the circles
+
 import numpy as np
 import cv2
 import cv2.cv as cv
@@ -26,7 +28,7 @@ while(True):
 		cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)	
                 cannyimg=cv2.Canny(img,100,200)
 		circles = cv2.HoughCircles(cannyimg,cv.CV_HOUGH_GRADIENT,1,350,
-			   param1=50,param2=30,minRadius=140,maxRadius=200)
+			   param1=50,param2=30,minRadius=0,maxRadius=0) # change min/max radius if too many circles, the 350 (second variable) is distance between circle centres, decrease for more circles
 		if circles != None:
 			circles = np.uint16(np.around(circles))
 			for i in circles[0,:]:
