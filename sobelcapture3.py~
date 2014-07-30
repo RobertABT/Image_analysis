@@ -65,7 +65,7 @@ while True:
 		#dst = cv2.add(abs_grad_x,abs_grad_y)
 
 
-		circles = cv2.HoughCircles(dst,cv.CV_HOUGH_GRADIENT,1,350,
+		circles = cv2.HoughCircles(dst,cv.CV_HOUGH_GRADIENT,1,10,
 				param1=50,param2=30,minRadius=0,maxRadius=0) #if too many circles are detected make minradius=140,maxradius=200
 		print circles 
 		if circles ==None:
@@ -109,7 +109,7 @@ while True:
 			print 'AvgGreyCount=' 
 			print AvgGreyCount 
 			cv2.imshow('detected pixels', original)
-			print 'Press ''s'' to save image or ESC to Discard (Either will allow you to take another image) Then Press c to capture another image, Pressing ESC again will then exit'
+			print 'Press ''s'' to save image or ESC to Discard (Either will allow you to take another image) Then Press c to capture another image, Pressing ESC agin will then exit'
 			k = cv2.waitKey(0)
 			if k % 256 ==27:
 				cv2.destroyAllWindows()
